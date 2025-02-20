@@ -32,3 +32,19 @@ header {
 #sidebar-toggle { position: absolute; top: 10px; left: -40px; cursor: pointer; }
 #calendar-container { margin-right: 260px; flex-grow: 1; padding: 20px; }
 .event-icon { border-radius: 50%; padding: 5px; color: white; font-size: 12px; }
+.fc-event {
+    border-radius: 50%;  /* 원형으로 변경 */
+    width: 30px;         /* 원의 크기 조절 */
+    height: 30px;        /* 정사각형으로 맞춰야 원이 됨 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;          /* 내부 패딩 제거 */
+    overflow: hidden;    /* 내용 넘침 방지 */
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.fc-daygrid-event {
+    display: inline-flex !important; /* 인라인 요소처럼 가로 배치 */
+    margin-right: 5px; /* 이벤트 사이 간격 */
+}
