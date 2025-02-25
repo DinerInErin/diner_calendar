@@ -19,25 +19,25 @@
   <div id="app">
     <header class="d-flex justify-content-between align-items-center p-3">
       <div class="dummy"></div>
-      <h2 class="m-0"></h2>
+      <h2 class="m-0 title"></h2>
       <button id="sidebar-toggle" class="btn btn-light"><i class="fas fa-bars"></i></button>
     </header>
     <div id="sidebar">
       <!-- 사용자 프로필&로그인 버튼 자리-->
       <ul class="nav flex-column p-2">
         <li class="nav-item">
-          <router-link to="/main" class="nav-link text-white">메인</router-link>
+          <router-link to="/main" class="nav-link text-white"><i class="fa-solid fa-house"></i> 메인</router-link>
         </li>
         <li class="nav-item">
-          <router-link to="/schedule" class="nav-link text-white">다음 일정</router-link>
+          <router-link to="/schedule" class="nav-link text-white"><i class="fa-solid fa-clipboard-list"></i> 일정</router-link>
         </li>
         <li class="nav-item">
-          <router-link to="/calendar" class="nav-link text-white">일정 체크</router-link>
+          <router-link to="/calendar" class="nav-link text-white"><i class="fa-solid fa-calendar-days"></i> 캘린더</router-link>
         </li>
       </ul>
     </div>
     <div id="main-container">
-      <div id="main"><router-view></router-view></div>
+      <router-view></router-view></div>
     </div>
     <footer>
       <p>&copy; 2024 Diner Web. All rights reserved.</p>

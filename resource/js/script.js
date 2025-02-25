@@ -14,48 +14,35 @@ document.addEventListener("DOMContentLoaded", function () {
 		sidebarOverlay.classList.remove("active");
 	});
 
+	const app = document.getElementById("app");
 	const mainContainer = document.getElementById("main-container");
 	mainContainer.addEventListener("scroll", function () {
 		if (mainContainer.scrollTop > 50) {
-			mainContainer.classList.add("scrolled");
+			app.classList.add("scrolled");
 		} else {
-			mainContainer.classList.remove("scrolled");
+			app.classList.remove("scrolled");
 		}
 	});
 
-	window.initializeCalendar = function () {
-		Vue.nextTick(() => {
-			let calendarEl = document.getElementById('calendar');
-			if (!calendarEl) return;
+	const observer = new MutationObserver(() => {
+		const calendarEl = document.getElementById("calendar");
+		if (calendarEl && !calendarEl.dataset.initialized) {
+			calendarEl.dataset.initialized = "true"; // 중복 방지
+			console.log("✅ Calendar detected, initializing...");
 
 			let calendar = new FullCalendar.Calendar(calendarEl, {
-				initialView: 'dayGridMonth',
-				locale: 'ko',
+				initialView: "dayGridMonth",
+				locale: "ko",
 				selectable: true,
 				dateClick: function (info) {
-					$('#selectedDate').val(info.dateStr);
-					$('#eventModal').modal('show');
+					$("#selectedDate").val(info.dateStr);
+					$("#eventModal").modal("show");
 				}
 			});
 			calendar.render();
+		}
+	});
 
-			document.getElementById('saveEvent').addEventListener('click', function () {
-				let date = $('#selectedDate').val();
-				let reason = $('#reasonInput').val().trim();
-
-				if (reason) {
-					calendar.addEvent({
-						title: reason,
-						start: date,
-						backgroundColor: '#ff6666',
-						textColor: '#fff',
-						borderColor: '#ff3333'
-					});
-				}
-
-				$('#eventModal').modal('hide');
-				$('#reasonInput').val('');
-			});
-		});
-	};
+	// `#app` 내부 변화를 감지 (동적 HTML 변경 감지)
+	observer.observe(document.getElementById("app"), { childList: true, subtree: true });
 });
