@@ -1,0 +1,159 @@
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, i, center, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, audio, canvas, details, figcaption,
+figure, footer, header, hgroup, mark, menu, meter, nav,
+output, progress, section, summary, time, video,button{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 19px;
+    font-family: 'Pretendard-Regular', '맑은 고딕';
+}
+::-webkit-scrollbar {width: 10px; background: transparent; }
+::-webkit-scrollbar-thumb {width: 10px; background: transparent; box-shadow: inset -2px 0 0 0 #c1c1c1;}
+::-webkit-scrollbar-thumb:hover {width: inherit; background: #c1c1c1;}
+a {color: inherit !important; text-decoration: none !important;}
+a:hover {color: inherit !important; text-decoration: none !important;}
+a.hide{opacity: 0; pointer-events: none;}
+a.show{opacity: unset; pointer-events: all;}
+body { margin: 0; padding: 0; overflow: hidden;}
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background: rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    z-index: 1000;
+    transition: background 0.3s ease-in-out;
+}
+footer {
+    position: fixed;
+    width: 100%;
+    background: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 14px;
+}
+#main-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow-y: auto;
+    background-color: white;
+}
+#main-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 160px;
+
+    background-image:
+            linear-gradient(to bottom, rgba(255, 255, 255, 0) 50%, white 100%),
+            url('../image/KakaoTalk_20250225_135652615.png');
+    background-position: center top;
+    background-repeat: repeat-x;
+
+    background-size: 100% 160px, auto 300%;
+
+    filter: blur(0px);
+    transition: filter 0.3s ease-in-out;
+}
+#main-container.scrolled::before {
+    filter: blur(8px);
+}
+#main {position: relative; margin-top: 80px; z-index: 1;}
+#sidebar {
+    position: fixed;
+    top: 0;
+    right: -250px;
+    width: 250px;
+    height: 100vh;
+    background: #333;
+    color: white;
+    transition: right 0.3s ease-in-out;
+    z-index: 10000;
+}
+#sidebar.active {
+    right: 0;
+}
+#sidebar-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: transparent;
+    display: none;
+    z-index: 9999;
+}
+#sidebar-overlay.active {
+    display: block;
+}
+
+#sidebar.open {
+    right: 0;
+}
+#sidebar.hidden { transform: translateX(100%); }
+#sidebar-toggle { cursor: pointer; }
+#calendar-container { position: relative; padding: 20px; margin-top: 60px; z-index: 1;}
+.event-icon { border-radius: 50%; padding: 5px; color: white; font-size: 12px; }
+.fc-event {
+    border-radius: 50%;  /* 원형으로 변경 */
+    width: 30px;         /* 원의 크기 조절 */
+    height: 30px;        /* 정사각형으로 맞춰야 원이 됨 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;          /* 내부 패딩 제거 */
+    overflow: hidden;    /* 내용 넘침 방지 */
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.fc-daygrid-event {
+    display: inline-flex !important; /* 인라인 요소처럼 가로 배치 */
+    margin-right: 5px; /* 이벤트 사이 간격 */
+}
+.fc .fc-daygrid-day-top {flex-direction: revert; padding: 5px 5px;}
+.fc-theme-standard .fc-scrollgrid {border: none;}
+.fc-theme-standard td, .fc-theme-standard th {border: none;}
+.fc-theme-standard td {border-top: 1px solid var(--fc-border-color);}
+.fc-col-header {border-bottom: 1px solid var(--fc-border-color);}
+.fc-day.fc-day-sun {color: #dc3545;}
+.fc-day.fc-day-sat {color: #0d6efd;}
+.fc .fc-daygrid-day.fc-day-today {background-color: unset;}
+.fc .fc-daygrid-day.fc-day-today .fc-daygrid-day-top {color: white;}
+.fc .fc-daygrid-day.fc-day-today .fc-daygrid-day-number {background-color: #323232; border-radius: 5px;}
+.fc a.fc-daygrid-day-number.holiday {color: #dc3545 !important;}
+.fc-h-event .fc-event-main-frame {height: 25px;}
+.fc-event-time {font-size: 15px; color:#212529;}
+.fc-event-title {font-size: 17px; color:#212529;}
+.fc-daygrid-block-event .fc-event-time {font-weight: initial;}
+.fc-daygrid-dot-event .fc-event-title {font-weight: initial;}
+.fc-daygrid-more-link.fc-more-link{font-size: 14px; color: #212529;}
+.fc-h-event .fc-event-main-frame {align-items: center;}
+.fc-h-event .fc-event-main {color:#212529;padding-left: 5px;}
+.fc-h-event {background-color: #CBEBE1; border: none; margin: 5px;}
+.fc-theme-standard td {max-height: 20%; min-height: 20%; height: 20%;}
+.fc-highlight {background: rgba(50, 255, 180, 0.3) !important;}
+.fc-selected-date {background: rgba(50, 255, 180, 0.3) !important;}
+.fc-dayGridMonth-view tbody {height: 100vh;}
