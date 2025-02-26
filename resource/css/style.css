@@ -18,7 +18,7 @@ output, progress, section, summary, time, video,button{
     margin: 0;
     padding: 0;
     border: 0;
-    font-size: 19px;
+    font-size: 17px;
     font-family: 'Pretendard-Regular', '맑은 고딕';
 }
 ::-webkit-scrollbar {width: 10px; background: transparent; }
@@ -44,7 +44,6 @@ header {
     transition: background 0.3s ease-in-out;
 }
 footer {
-    position: fixed;
     width: 100%;
     background: #333;
     color: white;
@@ -52,21 +51,22 @@ footer {
     padding: 10px 0;
     font-size: 14px;
 }
+.hidden { display: none; }
 #app::before {
     content: "";
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 160px;
+    height: 120px;
 
     background-image:
             linear-gradient(to bottom, rgba(255, 255, 255, 0) 50%, white 100%),
-            url('../image/KakaoTalk_20250225_135652615.png');
+            url('../image/header-pattern.png');
     background-position: center top;
     background-repeat: repeat-x;
 
-    background-size: 100% 160px, auto 300%;
+    background-size: 100% 120px, auto 300%;
 
     filter: blur(0px);
     transition: filter 0.3s ease-in-out;
@@ -92,9 +92,16 @@ footer {
     transition: right 0.3s ease-in-out;
     z-index: 10000;
 }
+#sidebar .nav-item .nav-link {display: flex;}
+#sidebar .nav-item .nav-icon {flex: 1.3;}
+#sidebar .nav-item .nav-name {flex: 8.7;}
 #sidebar.active {
     right: 0;
 }
+#sidebar .login-container .login-btn-area {display: flex; align-items: center; gap: 10px; font-size: 35px;}
+#sidebar .login-container .profile-img { width: 35px; height: 35px; border-radius: 50%;}
+#sidebar .login-container .profile-icon { display: flex;}
+#sidebar .login-container .profile-icon span {font-size: 35px;}
 #sidebar-overlay {
     position: fixed;
     top: 0;

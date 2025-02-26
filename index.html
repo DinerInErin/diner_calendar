@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>다이너 웹</title>
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/6.1.8/index.global.min.js"></script>
@@ -12,7 +13,7 @@
   <script src="resource/js/app.js"></script>
   <script src="resource/js/script.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
   <link rel="stylesheet" href="resource/css/style.css">
 </head>
 <body>
@@ -20,24 +21,62 @@
     <header class="d-flex justify-content-between align-items-center p-3">
       <div class="dummy"></div>
       <h2 class="m-0 title"></h2>
-      <button id="sidebar-toggle" class="btn btn-light"><i class="fas fa-bars"></i></button>
+      <div class="sidebar-toggle-area">
+        <button id="sidebar-toggle" class="btn"><span class="material-symbols-outlined">menu</span></button>
+      </div>
     </header>
     <div id="sidebar">
+      <div class="just-diner">
+        <img src="resource/image/default-profile.png">
+      </div>
+      <div class="login-container p-3">
+        <div class="profile-icon">
+          <span class="material-symbols-outlined">account_circle</span>
+        </div>
+        <div id="user-info" class="hidden">
+          <img id="profile-img" class="profile-img" src="" alt="Profile">
+          <span id="user-name"></span>
+        </div>
+        <div id="login-btn-area">
+          <button class="btn btn-dark">로그인</button>
+        </div>
+      </div>
       <!-- 사용자 프로필&로그인 버튼 자리-->
       <ul class="nav flex-column p-2">
         <li class="nav-item">
-          <router-link to="/main" class="nav-link text-white"><i class="fa-solid fa-house"></i> 메인</router-link>
+          <router-link to="/main" class="nav-link text-white">
+            <span class="nav-icon"><span class="material-symbols-outlined">home</span></span>
+            <span class="nav-name">메인</span>
+          </router-link>
         </li>
         <li class="nav-item">
-          <router-link to="/schedule" class="nav-link text-white"><i class="fa-solid fa-clipboard-list"></i> 일정</router-link>
+          <router-link to="/schedule" class="nav-link text-white">
+            <span class="nav-icon"><span class="material-symbols-outlined">event_available</span></span>
+            <span class="nav-name">일정</span>
+          </router-link>
         </li>
         <li class="nav-item">
-          <router-link to="/calendar" class="nav-link text-white"><i class="fa-solid fa-calendar-days"></i> 캘린더</router-link>
+          <router-link to="/calendar" class="nav-link text-white">
+            <span class="nav-icon"><span class="material-symbols-outlined">calendar_month</span></span>
+            <span class="nav-name">캘린더</span>
+          </router-link>
+        </li>
+        <li class="nav-item">
+          <router-link to="/calendar" class="nav-link text-white">
+            <span class="nav-icon"><span class="material-symbols-outlined">calculate</span></span>
+            <span class="nav-name">분배</span>
+          </router-link>
+        </li>
+        <li class="nav-item">
+          <router-link to="/calendar" class="nav-link text-white">
+            <span class="nav-icon"><span class="material-symbols-outlined">money_bag</span></span>
+            <span class="nav-name">주머니</span>
+          </router-link>
         </li>
       </ul>
     </div>
     <div id="main-container">
-      <router-view></router-view></div>
+      <router-view></router-view>
     </div>
     <footer>
       <p>&copy; 2024 Diner Web. All rights reserved.</p>
